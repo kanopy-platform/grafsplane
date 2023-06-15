@@ -1,0 +1,16 @@
+---
+apiVersion: meta.pkg.crossplane.io/v1
+kind: Configuration
+metadata:
+  name: grafana-dashboards
+spec:
+  crossplane:
+    version: ">=v1.0.0"
+  dependsOn:
+  - provider: xpkg.upbound.io/grafana/provider-grafana
+    version: ">=v0.5.0"
+  package: PACKAGE_NAME
+  packagePullPolicy: IfNotPresent
+  revisionActivationPolicy: Automatic
+  revisionHistoryLimit: 3
+...
