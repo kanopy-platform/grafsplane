@@ -1,4 +1,4 @@
-module github.com/kanopy-platform/grafana-manager
+module github.com/kanopy-platform/grafsplane
 
 go 1.20
 

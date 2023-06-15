@@ -1,0 +1,10 @@
+---
+apiVersion: pkg.crossplane.io/v1
+kind: Configuration
+metadata:
+  name: grafsplane
+spec:
+  package: registry.example.com/grafsplane:latest
+  packagePullPolicy: IfNotPresent
+  revisionHistoryLimit: 10
+...

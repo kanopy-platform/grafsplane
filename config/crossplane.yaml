@@ -2,7 +2,7 @@
 apiVersion: meta.pkg.crossplane.io/v1
 kind: Configuration
 metadata:
-  name: grafana-dashboards
+  name: PACKAGE_NAME
 spec:
   crossplane:
     version: ">=v1.0.0"
