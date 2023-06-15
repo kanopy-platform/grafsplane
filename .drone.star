@@ -1,5 +1,5 @@
 def main(ctx):
-    platforms = ["amd64", "arm64"]
+    platforms = ["amd64"]
 
     volumes = [
         {
