@@ -8,6 +8,8 @@ the XRs.
 
 ProvisionedDashboard - A Composite Resource managing a grafana dashboard within an org and optionally a specific folder.
 
+The current package expects a grafana.crossplane.io/ProviderConfig named provisioneddashboards.
+
 ## XRD Generation
 
 XRDs are defined using go structs and struct markers. The [kanopy-platform/controller-tools](https://github.com/kanopy-platform/controller-tools)
