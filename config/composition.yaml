@@ -61,8 +61,11 @@ spec:
       policy:
         fromFieldPath: Required
     - type: FromCompositeFieldPath
-      fromFieldPath: spec.providerConfigName
+      fromFieldPath: spec.namespace
       toFieldPath: spec.providerConfigRef.name
       policy:
         fromFieldPath: Required
+    - type: FromCompositeFieldPath
+      fromFieldPath: metadata.name
+      toFieldPath: metadata.name
 ...

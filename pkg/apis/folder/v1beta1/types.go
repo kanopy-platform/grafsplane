@@ -30,5 +30,5 @@ type ProvisionedFolderSpec struct {
 	// +kubebuilder:validation:Optional
 	DeletionPolicy string `json:"deletionPolicy,omitempty"`
 	// +kubebuilder:validation:Required
-	ProviderConfigName string `json:"providerConfigName,omitempty"`
+	Namespace string `json:"namespace,omitempty"`
 }
