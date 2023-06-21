@@ -26,13 +26,14 @@ spec:
       policy:
         fromFieldPath: Required
     - type: FromCompositeFieldPath
-      fromFieldPath: spec.orgID
-      toFieldPath: spec.forProvider.orgId
+      fromFieldPath: spec.folderRef
+      toFieldPath: spec.forProvider.folderRef.name
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.namespace
+      toFieldPath: spec.providerConfigRef.name
       policy:
         fromFieldPath: Required
-    - type: FromCompositeFieldPath
-      fromFieldPath: spec.folderID
-      toFieldPath: spec.forProvider.folder
+...
 ---
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
