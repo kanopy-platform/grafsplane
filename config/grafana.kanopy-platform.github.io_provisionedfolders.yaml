@@ -34,17 +34,15 @@ spec:
             type: object
           spec:
             properties:
-              deletionpolicy:
+              deletionPolicy:
                 type: string
-              foldertitle:
+              folderTitle:
                 type: string
-              folderuid:
-                type: string
-              namespace:
+              providerConfigName:
                 type: string
             required:
-            - foldertitle
-            - namespace
+            - folderTitle
+            - providerConfigName
             type: object
         type: object
     served: true

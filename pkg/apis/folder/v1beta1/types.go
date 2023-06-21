@@ -26,11 +26,9 @@ type ProvisionedFolder struct {
 
 type ProvisionedFolderSpec struct {
 	// +kubebuilder:validation:Required
-	FolderTitle string `json:"foldertitle,omitempty"`
+	FolderTitle string `json:"folderTitle,omitempty"`
 	// +kubebuilder:validation:Optional
-	FolderUID string `json:"folderuid,omitempty"`
-	// +kubebuilder:validation:Optional
-	DeletionPolicy string `json:"deletionpolicy,omitempty"`
+	DeletionPolicy string `json:"deletionPolicy,omitempty"`
 	// +kubebuilder:validation:Required
-	Namespace string `json:"namespace,omitempty"`
+	ProviderConfigName string `json:"providerConfigName,omitempty"`
 }

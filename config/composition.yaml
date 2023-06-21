@@ -33,4 +33,34 @@ spec:
     - type: FromCompositeFieldPath
       fromFieldPath: spec.folderID
       toFieldPath: spec.forProvider.folder
+---
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: provisionedfolders
+  labels:
+    crossplane.io/xrd: provisionedfolders.grafana.kanopy-platform.github.io
+    provider: grafana
+spec:
+  compositeTypeRef:
+    apiVersion: grafana.kanopy-platform.github.io/v1beta1
+    kind: ProvisionedFolder
+  writeConnectionSecretsToNamespace: crossplane-system
+  resources:
+  - name: folder
+    base:
+      apiVersion: oss.grafana.crossplane.io/v1alpha1
+      kind: Folder
+    patches:
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.deletionPolicy
+      toFieldPath: spec.deletionPolicy
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.folderTitle
+      toFieldPath: spec.forProvider.title
+      policy:
+        fromFieldPath: Required
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.providerConfigName
+      toFieldPath: spec.providerConfigRef.name
 ...
