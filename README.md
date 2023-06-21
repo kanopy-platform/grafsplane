@@ -17,7 +17,7 @@ fork provides an xrd plugin used to emit the xrd definition in config. For more 
 the available markers pass the plusin the -w flag or consulte the marker documentation.
 
 
-## Configfuration Package
+## Configuration Package
 
 Packaging into a [Crossplane Configuration package](https://docs.crossplane.io/latest/concepts/packages/) is done via the [crossplane-package](https://github.com/10gen/kanopy-container-images/tree/main/crossplane-package)
 image. All yaml files in the config directory will be included in the configuration package that is published.
