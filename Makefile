@@ -37,7 +37,7 @@ docker-snyk: ## Run local snyk scan, SNYK_TOKEN environment variable must be set
 
 .PHONY: docker
 docker:
-	@docker build --build-arg GIT_COMMIT=${GIT_COMMIT} -t $(CMD_NAME):latest .
+	@docker build --build-arg TAG=${PACKAGE_NAME} -t $(PACKAGE_NAME):latest .
 
 .PHONY: docker-run
 docker-run: docker ## Build and run the application in a local docker container
