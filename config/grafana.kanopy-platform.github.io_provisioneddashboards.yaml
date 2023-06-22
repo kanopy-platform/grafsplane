@@ -36,14 +36,13 @@ spec:
             properties:
               config:
                 type: string
-              folderID:
+              folderRef:
                 type: string
-              orgID:
+              namespace:
                 type: string
             required:
             - config
-            - orgID
+            - namespace
             type: object
         type: object
     served: true
-...

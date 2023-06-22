@@ -25,10 +25,10 @@ type ProvisionedDashboard struct {
 }
 
 type ProvisionedDashboardSpec struct {
-	FolderID string `json:"folderID,omitempty"`
+	FolderRef string `json:"folderRef,omitempty"`
 
 	// +kubebuilder:validation:Required
 	Config string `json:"config,omitempty"`
 	// +kubebuilder:validation:Required
-	OrgID string `json:"orgID,omitempty"`
+	Namespace string `json:"namespace,omitempty"`
 }
