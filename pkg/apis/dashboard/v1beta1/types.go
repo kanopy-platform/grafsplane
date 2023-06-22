@@ -32,3 +32,12 @@ type ProvisionedDashboardSpec struct {
 	// +kubebuilder:validation:Required
 	Namespace string `json:"namespace,omitempty"`
 }
+
+// ProvisionedDashboardList contains a list of ProvisionedDashboards.
+// +kubebuilder:object:root=true
+
+type ProvisionedDashboardList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	Items           []ProvisionedDashboard `json:"items"`
+}

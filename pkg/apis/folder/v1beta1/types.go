@@ -32,3 +32,12 @@ type ProvisionedFolderSpec struct {
 	// +kubebuilder:validation:Required
 	Namespace string `json:"namespace,omitempty"`
 }
+
+// ProvisionedFolderList contains a list of ProvisionedFolder.
+// +kubebuilder:object:root=true
+
+type ProvisionedFolderList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	Items           []ProvisionedFolder `json:"items"`
+}
