@@ -96,8 +96,8 @@ spec:
       fromFieldPath: spec.basicAuth
       toFieldPath: spec.forProvider.basicAuthEnabled
     - type: FromCompositeFieldPath
-      fromFieldPath: spc.BasicAuthUsername
-      toFieldPath: spec.forProvider.BasicAuthUsername
+      fromFieldPath: spec.basicAuthUsername
+      toFieldPath: spec.forProvider.basicAuthUsername
     - type: FromCompositeFieldPath
       fromFieldPath: spec.databaseName
       toFieldPath: spec.forProvider.databaseName
