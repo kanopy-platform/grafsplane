@@ -70,3 +70,69 @@ spec:
       fromFieldPath: metadata.name
       toFieldPath: metadata.name
 ...
+---
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: provisioneddatasources
+  labels:
+    crossplane.io/xrd: provisioneddatasources.grafana.kanopy-platform.github.io
+    provider: grafana
+spec:
+  compositeTypeRef:
+    apiVersion: grafana.kanopy-platform.github.io/v1beta1
+    kind: ProvisionedDataSource
+  writeConnectionSecretsToNamespace: crossplane-system
+  resources:
+  - name: datasource
+    base:
+      apiVersion: oss.grafana.crossplane.io/v1alpha1
+      kind: DataSource
+    patches:
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.accessMode
+      toFieldPath: spec.forProvider.accessMode
+      policy:
+        fromFieldPath: Required
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.basicAuth
+      toFieldPath: spec.forProvider.basicAuthEnabled
+    - type: FromCompositeFieldPath
+      fromFieldPath: spc.BasicAuthUsername
+      toFieldPath: spec.forProvider.BasicAuthUsername
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.databaseName
+      toFieldPath: spec.forProvider.databaseName
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.default
+      toFieldPath: spec.forProvider.isDefault
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.type
+      toFieldPath: spec.forProvder.Type
+      policy:
+        fromFieldPath: Required
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.config
+      toFieldPath: spec.forProvder.jsonDataEncoded
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.secureConfig
+      toFieldPath: spec.forProvider.secureJsonDataEncoded
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.secureConfigRef
+      toFieldPath: spec.forProvider.secureJsonDataEncodedSecretRef
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.name
+      toFieldPath: spec.forProvider.name
+      policy:
+        fromFieldPath: Required
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.namespace
+      toFieldPath: spec.providerConfigRef.name
+      policy:
+        fromFieldPath: Required
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.url
+      toFieldPath: spec.forProvider.url
+      policy:
+        fromFieldPath: Required
+...

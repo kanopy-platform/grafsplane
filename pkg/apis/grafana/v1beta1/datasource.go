@@ -32,19 +32,34 @@ type ProvisionedDataSourceSpec struct {
 	BasicAuth         *bool  `json:"basicAuth,omitempty"`
 	BasicAuthUsername string `json:"basicAuthUsername,omitempty"`
 
-	// +kubebuilder:validation:Required
-	Name string `json:"name,omitempty"`
+	DatabaseName string `json:"databaseName,omitempty"`
 
 	Default *bool `json:"default,omitempty"`
 
 	// +kubebuilder:validation:Required
 	Type string `json:"type,omitempty"`
 
-	Config       string `json:"config,omitempty"`
-	SecureConfig string `json:"secureConfig,omitempty"`
+	Config          string           `json:"config,omitempty"`
+	SecureConfig    string           `json:"secureConfig,omitempty"`
+	SecureConfigRef *SecureConfigRef `json:"secureConfigRef,omitempty"`
+
+	// +kubebuilder:validation:Required
+	Name string `json:"name,omitempty"`
 
 	// +kubebuilder:validation:Required
 	Namespace string `json:"namespace,omitempty"`
+
+	// +kubebuilder:validation:Required
+	URL string `json:"url,omitempty"`
+}
+
+type SecureConfigRef struct {
+	// +kubebuilder:validation:Required
+	Key string `json:"key"`
+	// +kubebuilder:validation:Required
+	Name string `json:"name"`
+	// +kubebuilder:validation:Required
+	Namespace string `json:"namespace"`
 }
 
 // ProvisionedDashboardList contains a list of ProvisionedDashboards.
