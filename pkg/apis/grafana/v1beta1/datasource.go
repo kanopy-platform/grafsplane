@@ -24,6 +24,7 @@ type ProvisionedDataSource struct {
 	Status xpapiext.CompositeResourceDefinitionStatus `json:"status,omitempty"`
 }
 
+// +kubebuilder:object:generate=true
 type ProvisionedDataSourceSpec struct {
 	// +kubebuilder:validation:Enum=proxy;direct
 	AccessMode string `json:"accessMode,omitempty"`
