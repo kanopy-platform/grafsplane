@@ -106,12 +106,12 @@ spec:
       toFieldPath: spec.forProvider.isDefault
     - type: FromCompositeFieldPath
       fromFieldPath: spec.type
-      toFieldPath: spec.forProvder.type
+      toFieldPath: spec.forProvider.type
       policy:
         fromFieldPath: Required
     - type: FromCompositeFieldPath
       fromFieldPath: spec.config
-      toFieldPath: spec.forProvder.jsonDataEncoded
+      toFieldPath: spec.forProvider.jsonDataEncoded
     - type: FromCompositeFieldPath
       fromFieldPath: spec.secureConfig
       toFieldPath: spec.forProvider.secureJsonDataEncoded
