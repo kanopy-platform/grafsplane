@@ -1,7 +1,7 @@
-package folder
+package grafana
 
 import (
-	"github.com/kanopy-platform/grafsplane/pkg/apis/folder/v1beta1"
+	"github.com/kanopy-platform/grafsplane/pkg/apis/grafana/v1beta1"
 	"k8s.io/apimachinery/pkg/runtime"
 )
 

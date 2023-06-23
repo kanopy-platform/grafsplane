@@ -18,8 +18,7 @@ var (
 	AddToScheme        = SchemeBuilder.AddToScheme
 )
 
-// ProvisionedDashboard type metadata
-
+// ProvisionedFolder type metadata
 var (
 	ProvisionedFolderKind             = reflect.TypeOf(ProvisionedFolder{}).Name()
 	ProvisionedFolderGroupKind        = schema.GroupKind{Group: Group, Kind: ProvisionedFolderKind}.String()
@@ -27,6 +26,15 @@ var (
 	ProvisionedFolderGroupVersionKind = SchemeGroupVersion.WithKind(ProvisionedFolderKind)
 )
 
+// ProvisionedDashboard type metadata
+var (
+	ProvisionedDashboardKind             = reflect.TypeOf(ProvisionedDashboard{}).Name()
+	ProvisionedDashboardGroupKind        = schema.GroupKind{Group: Group, Kind: ProvisionedDashboardKind}.String()
+	ProvisionedDashboardKindAPIVersion   = ProvisionedDashboardKind + "." + SchemeGroupVersion.String()
+	ProvisionedDashboardGroupVersionKind = SchemeGroupVersion.WithKind(ProvisionedDashboardKind)
+)
+
 func init() {
 	SchemeBuilder.Register(&ProvisionedFolder{}, &ProvisionedFolderList{})
+	SchemeBuilder.Register(&ProvisionedDashboard{}, &ProvisionedDashboardList{})
 }
