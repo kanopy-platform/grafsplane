@@ -6,7 +6,7 @@ metadata:
   name: provisioneddatasources.grafana.kanopy-platform.github.io
 spec:
   enforcedCompositionRef:
-    name: provisioneddatasource
+    name: provisioneddatasources
   group: grafana.kanopy-platform.github.io
   names:
     kind: ProvisionedDataSource
@@ -73,7 +73,6 @@ spec:
               url:
                 type: string
             required:
-            - accessMode
             - name
             - namespace
             - type

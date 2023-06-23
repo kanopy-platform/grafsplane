@@ -15,7 +15,7 @@ import (
 // +kubebuilder:printcolumn:name="AGE",type="date",JSONPath=".metadata.creationTimestamp"
 // +kubebuilder:storageversion
 // +kubebuilder:resource:scope=Cluster,categories=crossplane,shortName=xrd;xrds
-// +kubebuilder:defaultcompositionref:name=provisioneddatasource,enforced=true
+// +kubebuilder:defaultcompositionref:name=provisioneddatasources,enforced=true
 type ProvisionedDataSource struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
@@ -26,7 +26,6 @@ type ProvisionedDataSource struct {
 
 type ProvisionedDataSourceSpec struct {
 	// +kubebuilder:validation:Enum=proxy;direct
-	// +kubebuilder:validation:Required
 	AccessMode string `json:"accessMode,omitempty"`
 
 	BasicAuth         *bool  `json:"basicAuth,omitempty"`

@@ -92,8 +92,6 @@ spec:
     - type: FromCompositeFieldPath
       fromFieldPath: spec.accessMode
       toFieldPath: spec.forProvider.accessMode
-      policy:
-        fromFieldPath: Required
     - type: FromCompositeFieldPath
       fromFieldPath: spec.basicAuth
       toFieldPath: spec.forProvider.basicAuthEnabled
