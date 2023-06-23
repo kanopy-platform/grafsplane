@@ -40,7 +40,6 @@ type ProvisionedDataSourceSpec struct {
 	Type string `json:"type,omitempty"`
 
 	Config          string           `json:"config,omitempty"`
-	SecureConfig    string           `json:"secureConfig,omitempty"`
 	SecureConfigRef *SecureConfigRef `json:"secureConfigRef,omitempty"`
 
 	// +kubebuilder:validation:Required
