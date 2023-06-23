@@ -61,7 +61,7 @@ type SecureConfigRef struct {
 	Namespace string `json:"namespace"`
 }
 
-// ProvisionedDashboardList contains a list of ProvisionedDashboards.
+// ProvisionedDataSourceList contains a list of ProvisionedDataSources.
 // +kubebuilder:object:root=true
 type ProvisionedDataSourceList struct {
 	metav1.TypeMeta `json:",inline"`
