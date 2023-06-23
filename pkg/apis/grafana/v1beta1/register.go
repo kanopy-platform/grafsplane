@@ -34,7 +34,16 @@ var (
 	ProvisionedDashboardGroupVersionKind = SchemeGroupVersion.WithKind(ProvisionedDashboardKind)
 )
 
+// ProvisionedDataSource type metadata
+var (
+	ProvisionedDataSourceKind             = reflect.TypeOf(ProvisionedDataSource{}).Name()
+	ProvisionedDataSourceGroupKind        = schema.GroupKind{Group: Group, Kind: ProvisionedDataSourceKind}.String()
+	ProvisionedDataSourceKindAPIVersion   = ProvisionedDataSourceKind + "." + SchemeGroupVersion.String()
+	ProvisionedDataSourceGroupVersionKind = SchemeGroupVersion.WithKind(ProvisionedDataSourceKind)
+)
+
 func init() {
 	SchemeBuilder.Register(&ProvisionedFolder{}, &ProvisionedFolderList{})
 	SchemeBuilder.Register(&ProvisionedDashboard{}, &ProvisionedDashboardList{})
+	SchemeBuilder.Register(&ProvisionedDataSource{}, &ProvisionedDataSourceList{})
 }
