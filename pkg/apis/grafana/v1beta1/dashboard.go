@@ -8,27 +8,36 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-// Grafana Folder resource.
+// infrastructure resources.
 // +kubebuilder:object:root=true
 // +kubebuilder:printcolumn:name="ESTABLISHED",type="string",JSONPath=".status.conditions[?(@.type=='Established')].status"
 // +kubebuilder:printcolumn:name="OFFERED",type="string",JSONPath=".status.conditions[?(@.type=='Offered')].status"
 // +kubebuilder:printcolumn:name="AGE",type="date",JSONPath=".metadata.creationTimestamp"
 // +kubebuilder:storageversion
 // +kubebuilder:resource:scope=Cluster,categories=crossplane,shortName=xrd;xrds
-// +kubebuilder:defaultcompositionref:name=provisionedfolders,enforced=true
-type ProvisionedFolder struct {
+// +kubebuilder:defaultcompositionref:name=provisioneddashboards,enforced=true
+type ProvisionedDashboard struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   ProvisionedFolderSpec                      `json:"spec,omitempty"`
+	Spec   ProvisionedDashboardSpec                   `json:"spec,omitempty"`
 	Status xpapiext.CompositeResourceDefinitionStatus `json:"status,omitempty"`
 }
 
-type ProvisionedFolderSpec struct {
+type ProvisionedDashboardSpec struct {
+	FolderRef string `json:"folderRef,omitempty"`
+
 	// +kubebuilder:validation:Required
-	FolderTitle string `json:"folderTitle,omitempty"`
-	// +kubebuilder:validation:Optional
-	DeletionPolicy string `json:"deletionPolicy,omitempty"`
+	Config string `json:"config,omitempty"`
 	// +kubebuilder:validation:Required
 	Namespace string `json:"namespace,omitempty"`
+}
+
+// ProvisionedDashboardList contains a list of ProvisionedDashboards.
+// +kubebuilder:object:root=true
+
+type ProvisionedDashboardList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	Items           []ProvisionedDashboard `json:"items"`
 }

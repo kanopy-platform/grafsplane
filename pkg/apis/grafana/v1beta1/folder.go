@@ -8,27 +8,36 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-// infrastructure resources.
+// Grafana Folder resource.
 // +kubebuilder:object:root=true
 // +kubebuilder:printcolumn:name="ESTABLISHED",type="string",JSONPath=".status.conditions[?(@.type=='Established')].status"
 // +kubebuilder:printcolumn:name="OFFERED",type="string",JSONPath=".status.conditions[?(@.type=='Offered')].status"
 // +kubebuilder:printcolumn:name="AGE",type="date",JSONPath=".metadata.creationTimestamp"
 // +kubebuilder:storageversion
 // +kubebuilder:resource:scope=Cluster,categories=crossplane,shortName=xrd;xrds
-// +kubebuilder:defaultcompositionref:name=provisioneddashboards,enforced=true
-type ProvisionedDashboard struct {
+// +kubebuilder:defaultcompositionref:name=provisionedfolders,enforced=true
+type ProvisionedFolder struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   ProvisionedDashboardSpec                   `json:"spec,omitempty"`
+	Spec   ProvisionedFolderSpec                      `json:"spec,omitempty"`
 	Status xpapiext.CompositeResourceDefinitionStatus `json:"status,omitempty"`
 }
 
-type ProvisionedDashboardSpec struct {
-	FolderRef string `json:"folderRef,omitempty"`
-
+type ProvisionedFolderSpec struct {
 	// +kubebuilder:validation:Required
-	Config string `json:"config,omitempty"`
+	FolderTitle string `json:"folderTitle,omitempty"`
+	// +kubebuilder:validation:Optional
+	DeletionPolicy string `json:"deletionPolicy,omitempty"`
 	// +kubebuilder:validation:Required
 	Namespace string `json:"namespace,omitempty"`
+}
+
+// ProvisionedFolderList contains a list of ProvisionedFolder.
+// +kubebuilder:object:root=true
+
+type ProvisionedFolderList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	Items           []ProvisionedFolder `json:"items"`
 }
