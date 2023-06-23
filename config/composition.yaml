@@ -106,7 +106,7 @@ spec:
       toFieldPath: spec.forProvider.isDefault
     - type: FromCompositeFieldPath
       fromFieldPath: spec.type
-      toFieldPath: spec.forProvder.Type
+      toFieldPath: spec.forProvder.type
       policy:
         fromFieldPath: Required
     - type: FromCompositeFieldPath
