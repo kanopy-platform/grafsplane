@@ -1,0 +1,9 @@
+apiVersion: grafana.kanopy-platform.github.io/v1beta1
+kind: ProvisionedDataSource
+metadata:
+  name: team-a-ds
+spec:
+  namespace: team-a
+  type: prometheus
+  name: prom
+  url: http://example.com

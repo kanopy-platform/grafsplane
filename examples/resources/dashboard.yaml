@@ -1,0 +1,8 @@
+apiVersion: grafana.kanopy-platform.github.io/v1beta1
+kind: ProvisionedDashboard
+metadata:
+  name: test-dash
+spec:
+  namespace: team-a
+  config: '{"title":"t"}'
+  folderRef: team-a-folder
