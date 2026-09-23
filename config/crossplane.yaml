@@ -5,10 +5,12 @@ metadata:
   name: PACKAGE_NAME
 spec:
   crossplane:
-    version: ">=v1.0.0"
+    version: ">=v1.14.0"
   dependsOn:
   - provider: xpkg.upbound.io/grafana/provider-grafana
     version: ">=v0.5.0"
+  - function: xpkg.crossplane.io/crossplane-contrib/function-patch-and-transform
+    version: "v0.10.11"
   package: PACKAGE_NAME
   packagePullPolicy: IfNotPresent
   revisionActivationPolicy: Automatic
