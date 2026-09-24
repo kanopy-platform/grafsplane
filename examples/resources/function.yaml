@@ -1,0 +1,7 @@
+# The package tag is filled in from config/crossplane.yaml dependsOn at render time.
+apiVersion: pkg.crossplane.io/v1beta1
+kind: Function
+metadata:
+  name: function-patch-and-transform # must match functionRef.name in config/composition.yaml
+spec:
+  package: xpkg.crossplane.io/crossplane-contrib/function-patch-and-transform

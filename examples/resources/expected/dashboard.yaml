@@ -1,0 +1,35 @@
+---
+apiVersion: grafana.kanopy-platform.github.io/v1beta1
+kind: ProvisionedDashboard
+metadata:
+  name: test-dash
+status:
+  conditions:
+  - lastTransitionTime: "2024-01-01T00:00:00Z"
+    message: 'Unready resources: dashboard'
+    reason: Creating
+    status: "False"
+    type: Ready
+---
+apiVersion: oss.grafana.crossplane.io/v1alpha1
+kind: Dashboard
+metadata:
+  annotations:
+    crossplane.io/composition-resource-name: dashboard
+  generateName: test-dash-
+  labels:
+    crossplane.io/composite: test-dash
+  ownerReferences:
+  - apiVersion: grafana.kanopy-platform.github.io/v1beta1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ProvisionedDashboard
+    name: test-dash
+    uid: ""
+spec:
+  forProvider:
+    configJson: '{"title":"t"}'
+    folderRef:
+      name: team-a-folder
+  providerConfigRef:
+    name: team-a

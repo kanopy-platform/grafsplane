@@ -1,0 +1,35 @@
+---
+apiVersion: grafana.kanopy-platform.github.io/v1beta1
+kind: ProvisionedDataSource
+metadata:
+  name: team-a-ds
+status:
+  conditions:
+  - lastTransitionTime: "2024-01-01T00:00:00Z"
+    message: 'Unready resources: datasource'
+    reason: Creating
+    status: "False"
+    type: Ready
+---
+apiVersion: oss.grafana.crossplane.io/v1alpha1
+kind: DataSource
+metadata:
+  annotations:
+    crossplane.io/composition-resource-name: datasource
+  generateName: team-a-ds-
+  labels:
+    crossplane.io/composite: team-a-ds
+  ownerReferences:
+  - apiVersion: grafana.kanopy-platform.github.io/v1beta1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ProvisionedDataSource
+    name: team-a-ds
+    uid: ""
+spec:
+  forProvider:
+    name: prom
+    type: prometheus
+    url: http://example.com
+  providerConfigRef:
+    name: team-a

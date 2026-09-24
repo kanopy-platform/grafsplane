@@ -1,0 +1,8 @@
+apiVersion: grafana.kanopy-platform.github.io/v1beta1
+kind: ProvisionedFolder
+metadata:
+  name: team-a-folder
+spec:
+  namespace: team-a
+  folderTitle: Team A
+  deletionPolicy: Orphan

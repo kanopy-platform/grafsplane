@@ -1,0 +1,35 @@
+---
+apiVersion: grafana.kanopy-platform.github.io/v1beta1
+kind: ProvisionedFolder
+metadata:
+  name: team-a-folder
+status:
+  conditions:
+  - lastTransitionTime: "2024-01-01T00:00:00Z"
+    message: 'Unready resources: folder'
+    reason: Creating
+    status: "False"
+    type: Ready
+---
+apiVersion: oss.grafana.crossplane.io/v1alpha1
+kind: Folder
+metadata:
+  annotations:
+    crossplane.io/composition-resource-name: folder
+  generateName: team-a-folder-
+  labels:
+    crossplane.io/composite: team-a-folder
+  name: team-a-folder
+  ownerReferences:
+  - apiVersion: grafana.kanopy-platform.github.io/v1beta1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ProvisionedFolder
+    name: team-a-folder
+    uid: ""
+spec:
+  deletionPolicy: Orphan
+  forProvider:
+    title: Team A
+  providerConfigRef:
+    name: team-a
