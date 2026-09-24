@@ -11,7 +11,6 @@ PKG ?= ./...
 
 CROSSPLANE_VERSION ?= v1.20.13
 OS := $(shell uname -s | tr '[:upper:]' '[:lower:]')
-ARCH := $(shell uname -m | sed -e 's/x86_64/amd64/' -e 's/aarch64/arm64/')
 BIN_DIR := $(CURDIR)/bin
 CROSSPLANE := $(BIN_DIR)/crossplane-$(CROSSPLANE_VERSION)
 
@@ -67,10 +66,7 @@ local:
 	kubectl apply --context=${CONTEXT} -n crossplane-system -f examples/k8s/
 
 $(CROSSPLANE):
-	mkdir -p $(BIN_DIR)
-	curl -fsSLo $@.tmp https://releases.crossplane.io/stable/$(CROSSPLANE_VERSION)/bin/$(OS)_$(ARCH)/crank
-	chmod +x $@.tmp
-	mv $@.tmp $@
+	XP_VERSION=$(CROSSPLANE_VERSION) ./install-crossplane/install.sh $@
 
 .PHONY: install-crossplane
 install-crossplane: $(CROSSPLANE) ## Install the crossplane CLI into ./bin
